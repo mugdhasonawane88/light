@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: gray;
+  font-size: 9px;
+  color: #888888;
+}
+.mainWrapper{
+  width: 400px;
+  margin: 100px auto;
+}
+.panel{
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+}
+.panel .col-form-label{
+  text-align: left;
+  font-size: 11px;
+  color: #747474;
+}
+.panelheader{
+  border-bottom: 1px solid #eaeaea;
+  padding: 2px 15px 4px 15px;
+  font-weight: 500;
+}
+.panel .panelheader .editIcon{margin-top: 5px;}
+.panel .panelheader .editCircle{    
+  border-radius: 15px;
+  padding: 2px 6px;
+  background: #f2f2f2;
+}
+.panel .panelheader .editCircle:hover{background: #747474;color:#f2f2f2;}
+.panel .panelheader label{
+  font-size: 15px;
+  color: #747474;
+}
+.panelbody{
+  padding: 10px 15px 0px 15px;
+}
+.col-form-label p{
+ color: #7d6aa5;
+}
+
+/**/
+.candidateheader{
+  border-bottom: 1px solid #eaeaea;
+  padding: 5px 15px;
+  font-weight: 500;
+  color:#797979;
+}
+.updateInfo{
+  padding: 15px;
+}
+#name{
+  position: relative;
+}
+#email{
+  position: relative;
+}
+#name p{
+  position: absolute;
+  top: 0;
+  left: 13px;
+  font-size: 9px;
+  color:#797979;
+}
+#email p{
+  position: absolute;
+  top: 0;
+  left: 13px;
+  font-size: 9px;
+  color:#797979;
+}
+#name input[type=text],#email input[type=text]{
+  color: #020202;
+  font-size: 13px;
+  height: 40px;
+  border-radius:1px;
+}
+.updatecandidatedetail button{
+  color: #654260;
+  width: 164px;
+  height: 36px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+}
+.updatecandidatedetail button:hover{
+  background-color: none;
+}
+.updatecandidatedetail .updateBtn{
+  background-color: #ffc72c; 
+  margin-right: 10px;
+}
+.updatecandidatedetail .cancelBtn{
+  background-color: #ffffff; 
+  border: 1px solid #838383;
+}
