@@ -2,6 +2,9 @@ import React from 'react';
 import { Component } from 'react';
 import Updatecandidatedetail from '../components/Updatecandidatedetail';
 import Modal from "react-modal";
+import { connect } from 'react-redux';
+import { fetchCandidate} from '../states/actions/fetchCandidateAction';
+
 
 const customStyles = {
   content: {
@@ -10,7 +13,7 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    width: '370px',
+    width: '430px',
     transform: 'translate(-50%, -50%)',
     padding: '0'
   }
@@ -36,16 +39,19 @@ class Candidatedetail extends Component {
   componentWillMount() {
     Modal.setAppElement('body');
   }
-  componentDidMount = () => {
-    var self = this;
-    fetch('http://localhost:3001/data')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (json) {        
-        self.setState({ candidateDetails: json });
-      });
-  };
+  // componentDidMount = () => {
+  //   var self = this;
+  //   fetch('http://localhost:3001/data')
+  //     .then(function (response) {
+  //       return response.json();
+  //     })
+  //     .then(function (json) {        
+  //       self.setState({ candidateDetails: json });
+  //     });
+  // };
+  componentDidMount() {
+    this.props.fetchCandidate();
+  }
   render() {
     console.log("candidateDetails", this.state.candidateDetails);
     return (
@@ -65,13 +71,13 @@ class Candidatedetail extends Component {
           <div className="row">
             <label className="col-sm-3 col-form-label">NICKNAME</label>
             <div className="col-sm-9 col-form-label">
-              <p>{this.state.candidateDetails.name}</p>
+              <p>{this.props.candidateDetails.name}</p>
             </div>
           </div>
           <div className="row">
             <label className="col-sm-3 col-form-label">EMAIL</label>
             <div className="col-sm-9 col-form-label">
-              <p>{this.state.candidateDetails.email}</p>
+              <p>{this.props.candidateDetails.email}</p>
               {/* <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com" /> */}
             </div>
           </div>
@@ -83,7 +89,7 @@ class Candidatedetail extends Component {
           style={customStyles}      
         >
 
-          {<Updatecandidatedetail candidateData={this.state.candidateDetails} />}
+          {<Updatecandidatedetail candidateData={this.props.candidateDetails} />}
           {/* <button
             className="btn btn-success margin-l-10 margin-t-15"
             onClick={this.closeModal}
@@ -97,5 +103,17 @@ class Candidatedetail extends Component {
     );
   }
 }
-
-export default Candidatedetail;
+const mapStateToProps = (state) => {
+  return {
+    candidateDetails: state.fetchCandidateReducer.list,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCandidate: () => {
+      dispatch(fetchCandidate())
+    }  
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Candidatedetail);
+// export default Candidatedetail;

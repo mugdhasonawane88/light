@@ -18,7 +18,9 @@ body {
   text-align: left;
   font-size: 11px;
   color: #747474;
+  font-weight: 500;
 }
+.panel .ReactModal__Overlay{background:#000000 !important;opacity: 0.9;}
 .panelheader{
   border-bottom: 1px solid #eaeaea;
   padding: 2px 15px 4px 15px;
@@ -45,9 +47,10 @@ body {
 /**/
 .candidateheader{
   border-bottom: 1px solid #eaeaea;
-  padding: 5px 15px;
+  padding: 7px 18px;
   font-weight: 500;
-  color:#797979;
+  color: #797979;
+  font-size: 18px;
 }
 .updateInfo{
   padding: 15px;
@@ -58,33 +61,30 @@ body {
 #email{
   position: relative;
 }
-#name p{
+#name p,#email p{
   position: absolute;
-  top: 0;
+  font-size: 11px;
+  color: #797979;
+  font-weight: 500;
   left: 13px;
-  font-size: 9px;
-  color:#797979;
+  top: 2px; 
 }
-#email p{
-  position: absolute;
-  top: 0;
-  left: 13px;
-  font-size: 9px;
-  color:#797979;
-}
+
 #name input[type=text],#email input[type=text]{
-  color: #020202;
-  font-size: 13px;
-  height: 40px;
-  border-radius:1px;
+  color: #000;
+  font-size: 16px;
+  height: 49px;
+  border-radius: 3px;
 }
 .updatecandidatedetail button{
   color: #654260;
-  width: 164px;
-  height: 36px;
-  font-size: 13px;
+  width: 194px;
+  height: 45px;
+  font-size: 18px;
   font-weight: 500;
   border: none;
+  margin-top: 14px;
+  margin-bottom: 10px;
 }
 .updatecandidatedetail button:hover{
   background-color: none;
