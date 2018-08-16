@@ -18,15 +18,13 @@ const fetchCandidateReducer = (state = initialState, action) => {
                 loading: true,
                 error: null
             };
-        case "FETCH_CANDIDATE_SUCCESS":
-            console.log(action);
+        case "FETCH_CANDIDATE_SUCCESS":            
             return {
                 ...state,
                 loading: false,
                 list: action.data
             };
-        case "FETCH_CANDIDATE_FAILURE":
-            debugger;
+        case "FETCH_CANDIDATE_FAILURE":          
             return {
                 ...state,
                 loading: false,

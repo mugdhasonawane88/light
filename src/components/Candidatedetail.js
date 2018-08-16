@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Updatecandidatedetail from '../components/Updatecandidatedetail';
 import Modal from "react-modal";
 import { connect } from 'react-redux';
-import { fetchCandidate, updateCandidate } from '../states/actions/fetchCandidateAction';
+import { fetchCandidateBegin, updateCandidate } from '../states/actions/fetchCandidateAction';
 import { bindActionCreators } from 'redux';
 
 
@@ -47,7 +47,7 @@ class Candidatedetail extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchCandidate();
+    this.props.fetchCandidateBegin();
   }
   render() {
     return (
@@ -94,7 +94,7 @@ class Candidatedetail extends Component {
 
 }
 Candidatedetail.propTypes = {
-  fetchCandidate: PropTypes.func.isRequired,
+  fetchCandidateBegin: PropTypes.func.isRequired,
   candidateDetails: PropTypes.object,
   updateCandidate: PropTypes.func
 }
@@ -104,7 +104,7 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ fetchCandidate, updateCandidate }, dispatch);
+  return bindActionCreators({ fetchCandidateBegin, updateCandidate }, dispatch);
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Candidatedetail);
 

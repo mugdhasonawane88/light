@@ -5,7 +5,7 @@ import Api from '../../states/api/services'
 export default function* appSaga(){
     yield all([
         takeEvery(ActionTypes.FETCH_CANDIDATE_BEGIN, fetchCandidatedetails),
-        takeEvery(ActionTypes.UPDATE_CANDIDADTE_DETAILS, updateCandidatedetails)
+        takeEvery(ActionTypes.UPDATE_CANDIDADTE_BEGIN, updateCandidatedetails)
     ])
 }
  
@@ -19,10 +19,7 @@ export function* fetchCandidatedetails(){
     }
 }
 
-export function* updateCandidatedetails(payload){
-    console.log(payload);
-    window.stop();
-    //debugger
+export function* updateCandidatedetails(payload){   
     try { 
         const data = yield call(Api.updateCandidate, payload) 
         yield put({type:  ActionTypes.FETCH_CANDIDATE_SUCCESS, data}) 
