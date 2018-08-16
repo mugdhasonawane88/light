@@ -1,34 +1,40 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Updatecandidatedetail from '../components/Updatecandidatedetail';
 import Modal from "react-modal";
 import { connect } from 'react-redux';
-import { fetchCandidate} from '../states/actions/fetchCandidateAction';
+import { fetchCandidate, updateCandidate } from '../states/actions/fetchCandidateAction';
+import { bindActionCreators } from 'redux';
 
 
 const customStyles = {
   content: {
-    top: '30%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    width: '430px',
-    transform: 'translate(-50%, -50%)',
-    padding: '0'
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "32%",
+    border: "none",
+    padding:"0",
+    margin:"0" 
   }
 };
 
 
 class Candidatedetail extends Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
       modalIsOpen: false,
-      candidateDetails: [],
+      candidateDetails: {},
       selectedCandidate: {}
     };
   }
+
   openModal = (item) => {
     this.setState({ modalIsOpen: true });
   }
@@ -39,21 +45,11 @@ class Candidatedetail extends Component {
   componentWillMount() {
     Modal.setAppElement('body');
   }
-  // componentDidMount = () => {
-  //   var self = this;
-  //   fetch('http://localhost:3001/data')
-  //     .then(function (response) {
-  //       return response.json();
-  //     })
-  //     .then(function (json) {        
-  //       self.setState({ candidateDetails: json });
-  //     });
-  // };
+
   componentDidMount() {
     this.props.fetchCandidate();
   }
   render() {
-    console.log("candidateDetails", this.state.candidateDetails);
     return (
       <div className="panel">
         <div className="panelheader">
@@ -71,6 +67,8 @@ class Candidatedetail extends Component {
           <div className="row">
             <label className="col-sm-3 col-form-label">NICKNAME</label>
             <div className="col-sm-9 col-form-label">
+              {console.log("aaa", this.props.candidateDetails)}
+
               <p>{this.props.candidateDetails.name}</p>
             </div>
           </div>
@@ -78,7 +76,7 @@ class Candidatedetail extends Component {
             <label className="col-sm-3 col-form-label">EMAIL</label>
             <div className="col-sm-9 col-form-label">
               <p>{this.props.candidateDetails.email}</p>
-              {/* <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com" /> */}
+              {/* <input type="text" readonly className="form-control-plaintext" id="staticEmail" value="email@example.com" /> */}
             </div>
           </div>
         </div>
@@ -86,22 +84,19 @@ class Candidatedetail extends Component {
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
-          style={customStyles}      
+          style={customStyles}
         >
-
-          {<Updatecandidatedetail candidateData={this.props.candidateDetails} />}
-          {/* <button
-            className="btn btn-success margin-l-10 margin-t-15"
-            onClick={this.closeModal}
-          >
-            Cancel
-          </button> */}
-          {/* <i className="fa fa-times" aria-hidden="true"  onClick={this.closeModal}></i> */}
+          {<Updatecandidatedetail candidateData={this.props.candidateDetails} closeModal={this.closeModal.bind(this)} onSubmit={this.props.updateCandidate} />}
         </Modal>
-
       </div>
     );
   }
+
+}
+Candidatedetail.propTypes = {
+  fetchCandidate: PropTypes.func.isRequired,
+  candidateDetails: PropTypes.object,
+  updateCandidate: PropTypes.func
 }
 const mapStateToProps = (state) => {
   return {
@@ -109,11 +104,7 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchCandidate: () => {
-      dispatch(fetchCandidate())
-    }  
-  };
+  return bindActionCreators({ fetchCandidate, updateCandidate }, dispatch);
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Candidatedetail);
-// export default Candidatedetail;
+

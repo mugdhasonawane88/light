@@ -12,7 +12,7 @@ ReactDOM.render(
     <Provider  store={store} >
         <div className="App">
             <div className="mainWrapper">
-                <Candidatedetail/>
+                <Candidatedetail />
             </div>
         </div>
     </Provider>,

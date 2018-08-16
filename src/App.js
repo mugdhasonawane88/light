@@ -5,18 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Candidatedetail from '../src/components/Candidatedetail';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    
-    };
-  }
-
   render() {
     return (
       <div className="App">
         <div className="mainWrapper">
-          <Candidatedetail />        
+          <Candidatedetail />
         </div>
       </div>
     );

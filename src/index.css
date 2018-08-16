@@ -13,6 +13,7 @@ body {
 .panel{
   border: 1px solid #eaeaea;
   border-radius: 3px;
+  z-index: 9;
 }
 .panel .col-form-label{
   text-align: left;
@@ -20,7 +21,9 @@ body {
   color: #747474;
   font-weight: 500;
 }
-.panel .ReactModal__Overlay{background:#000000 !important;opacity: 0.9;}
+.ReactModal__Overlay{
+  background-color: rgba(0,0,0,.5) !important;
+}
 .panelheader{
   border-bottom: 1px solid #eaeaea;
   padding: 2px 15px 4px 15px;
@@ -32,11 +35,12 @@ body {
   padding: 2px 6px;
   background: #f2f2f2;
 }
-.panel .panelheader .editCircle:hover{background: #747474;color:#f2f2f2;}
+.panel .panelheader .editCircle:hover{background: #747474;color:#f2f2f2;cursor: pointer;}
 .panel .panelheader label{
   font-size: 15px;
   color: #747474;
 }
+.candidateheader span {cursor: pointer;}
 .panelbody{
   padding: 10px 15px 0px 15px;
 }
@@ -69,7 +73,7 @@ body {
   left: 13px;
   top: 2px; 
 }
-
+.validateError{font-size: 14px; color: red;clear: both;}
 #name input[type=text],#email input[type=text]{
   color: #000;
   font-size: 16px;
@@ -78,13 +82,14 @@ body {
 }
 .updatecandidatedetail button{
   color: #654260;
-  width: 194px;
+  width: 195px;
   height: 45px;
   font-size: 18px;
   font-weight: 500;
   border: none;
   margin-top: 14px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 .updatecandidatedetail button:hover{
   background-color: none;

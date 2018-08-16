@@ -1,9 +1,9 @@
-{  
-  "data" :
+{
+  "data": [
     {
-      "id": 1,
-      "name": "Molly Smith",
-      "email": "mollysmith@gmail.com"
-    }  
- 
+      "name": "aaaa",
+      "email": "mugdha@m.com",
+      "id": 1
+    }
+  ]
 }
